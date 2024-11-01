@@ -1,0 +1,39 @@
+body {
+    background-color: #f8f9fa; /* Color de fondo */
+}
+
+header {
+    background-color: #4a5d67; /* Color de encabezado */
+    color: white;
+    padding: 20px 0;
+}
+
+h2 {
+    color: #4a5d67; /* Color de los subtítulos */
+}
+
+.btn-primary {
+    background-color: #6a8d93; /* Color personalizado para el botón */
+    border-color: #6a8d93; /* Bordes del botón */
+}
+
+.btn-primary:hover {
+    background-color: #4a5d67; /* Color al pasar el ratón sobre el botón */
+    border-color: #4a5d67;
+}
+
+.card {
+    background-color: #ffffff; /* Fondo blanco para las tarjetas */
+    border: 1px solid #ccc; /* Bordes de las tarjetas */
+}
+
+.card-title {
+    color: #6a8d93; /* Color del título de las tarjetas */
+}
+
+#map {
+    height: 400px; /* Altura del mapa */
+    width: 100%;
+    border: 2px solid #6a8d93; /* Bordes del mapa */
+    border-radius: 5px; /* Bordes redondeados */
+}

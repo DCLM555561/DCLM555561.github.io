@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Chocolates</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+    <div class="container mt-5">
+        <header class="text-center mb-4">
+            <h1 class="display-4">La Dulce Vida</h1>
+            <p class="lead">Tu tienda de chocolates favorita</p>
+        </header>
+
+        <!-- Sección de imagen -->
+        <section class="text-center mb-5">
+            <h2>¡Mira Nuestro Chocolate!</h2>
+            <img src="choco.jfif" alt="Chocolate" class="img-fluid mb-3">
+        </section>
+
+        <!-- Sección de video -->
+        <section class="text-center mb-5">
+            <h2>Video de Nuestra Tienda</h2>
+            <video controls class="img-fluid mb-3">
+                <source src="choco1.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+        </section>
+
+        <!-- Ejercicio de JavaScript -->
+        <section class="text-center mb-5">
+            <h2>¡Participa!</h2>
+            <button id="chocolateButton" class="btn btn-primary">¿Cuál es tu chocolate favorito?</button>
+        </section>
+
+        <!-- Sección de Suma de Compras -->
+        <section class="text-center mb-5">
+            <h2>Total de Compra</h2>
+            <input type="number" id="precioInput" class="form-control mb-2" placeholder="Ingresa el precio">
+            <button id="agregarButton" class="btn btn-success">Agregar al total</button>
+            <h4 id="total">Total: $0.00</h4>
+        </section>
+
+        <!-- Sección de Ubicación -->
+        <section>
+            <h2 class="text-center">Nuestra Ubicación</h2>
+            <div id="map"></div>
+            <p id="latitud" class="text-center mt-2"></p>
+            <p id="longitud" class="text-center"></p>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=TU_CLAVE_API"></script>
+    <script>
+        function initMap() {
+            const ubicacion = { lat: 19.4326, lng: -99.1332 }; // Ejemplo: Ciudad de México
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: ubicacion,
+            });
+
+            new google.maps.Marker({
+                position: ubicacion,
+                map: map,
+                title: "Nuestra Tienda de Chocolates"
+            });
+
+            // Mostrar latitud y longitud
+            document.getElementById('latitud').innerText = `Latitud: ${ubicacion.lat}`;
+            document.getElementById('longitud').innerText = `Longitud: ${ubicacion.lng}`;
+        }
+
+        // Ejercicio de JavaScript para el botón
+        document.getElementById('chocolateButton').addEventListener('click', function() {
+            alert("¡El chocolate oscuro es el más popular entre nuestros clientes!");
+        });
+
+        // Suma de precios
+        let total = 0;
+        document.getElementById('agregarButton').addEventListener('click', function() {
+            const precioInput = document.getElementById('precioInput');
+            const precio = parseFloat(precioInput.value);
+            if (!isNaN(precio)) {
+                total += precio;
+                document.getElementById('total').innerText = `Total: $${total.toFixed(2)}`;
+                precioInput.value = ''; // Limpiar el campo de entrada
+            } else {
+                alert("Por favor, ingresa un número válido.");
+            }
+        });
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
